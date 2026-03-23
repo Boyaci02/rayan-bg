@@ -923,6 +923,7 @@
       .footer-brand { grid-column: 1 / -1; }
     }
     @media (max-width: 768px) {
+      .map-container { display: none; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
@@ -949,7 +950,7 @@
       <a href="#" class="nav-logo">RAYAN <span>B&amp;G</span></a>
       <ul class="nav-links">
         <li><a href="#om-oss">Om oss</a></li>
-        <li><a href="#meny">Meny</a></li>
+        <li><a href="meny.html">Meny</a></li>
         <li><a href="#hitta">Hitta oss</a></li>
         <li><a href="#galleri">Galleri</a></li>
       </ul>
@@ -963,7 +964,7 @@
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
     <a href="#om-oss">Om oss</a>
-    <a href="#meny">Meny</a>
+    <a href="meny.html">Meny</a>
     <a href="#hitta">Hitta oss</a>
     <a href="#galleri">Galleri</a>
     <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="mobile-cta">Beställ nu</a>
@@ -977,7 +978,7 @@
         <p class="hero-eyebrow">Välkommen till Angered</p>
         <h1>SMAKEN<br>AV <span class="outline">RAYAN</span></h1>
         <div class="hero-actions">
-          <a href="#meny" class="btn-primary">
+          <a href="meny.html" class="btn-primary">
             SE MENYN
             <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
           </a>
@@ -1065,90 +1066,6 @@
   </section>
 
   <!-- MENY CATEGORIES -->
-  <section class="meny-section" id="meny">
-    <div class="meny-inner">
-      <div class="meny-head reveal">
-        <h2>VÅR <span>MENY</span></h2>
-        <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="btn-primary" style="font-size:0.75rem;padding:12px 24px;">
-          Beställ online
-          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <!-- TABS -->
-      <div class="meny-tabs reveal">
-        <button class="meny-tab active" data-tab="kebab">🥙 Kebab</button>
-        <button class="meny-tab" data-tab="grillen">🔥 Grillen</button>
-        <button class="meny-tab" data-tab="hamburgare">🍔 Hamburgare</button>
-        <button class="meny-tab" data-tab="varmratter">🍽️ Varmrätter</button>
-        <button class="meny-tab" data-tab="tillbehor">🥗 Tillbehör</button>
-      </div>
-
-      <!-- KEBAB -->
-      <div class="meny-panel active" id="tab-kebab">
-        <div class="meny-grid">
-          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Rulle</span><span class="meny-item-price">85 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kebabrulle</span><span class="meny-item-price">80 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Falafel Rulle</span><span class="meny-item-price">70 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Tallrik</span><span class="meny-item-price">95 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kebabtallrik</span><span class="meny-item-price">90 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Falafel Tallrik</span><span class="meny-item-price">70 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Sallad</span><span class="meny-item-price">95 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kebabsallad</span><span class="meny-item-price">90 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Falafel Sallad</span><span class="meny-item-price">85 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Pitabröd</span><span class="meny-item-price">85 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kebab i Pitabröd</span><span class="meny-item-price">80 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Falafel i Pitabröd</span><span class="meny-item-price">75 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Special Bröd</span><span class="meny-item-price">90 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Falafel Special Bröd</span><span class="meny-item-price">75 kr</span></div>
-        </div>
-      </div>
-
-      <!-- GRILLEN -->
-      <div class="meny-panel" id="tab-grillen">
-        <div class="meny-grid">
-          <div class="meny-item"><span class="meny-item-name">Shish Kebab med Bröd</span><span class="meny-item-price">90 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Lammspett med Bröd</span><span class="meny-item-price">90 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kycklingspett med Bröd</span><span class="meny-item-price">90 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Shish Kebab Tallrik</span><span class="meny-item-price">95 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Lammspett Tallrik</span><span class="meny-item-price">95 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kycklingspett Tallrik</span><span class="meny-item-price">95 kr</span></div>
-        </div>
-      </div>
-
-      <!-- HAMBURGARE -->
-      <div class="meny-panel" id="tab-hamburgare">
-        <div class="meny-grid">
-          <div class="meny-item"><span class="meny-item-name">Hamburgare</span><span class="meny-item-price">från 80 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Kyckling Hamburgare</span><span class="meny-item-price">från 85 kr</span></div>
-        </div>
-      </div>
-
-      <!-- VARMRÄTTER -->
-      <div class="meny-panel" id="tab-varmratter">
-        <div class="meny-grid">
-          <div class="meny-item"><span class="meny-item-name">Linssoppa</span><span class="meny-item-price">40 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Lablabi med Kött</span><span class="meny-item-price">50 kr</span></div>
-        </div>
-      </div>
-
-      <!-- TILLBEHÖR -->
-      <div class="meny-panel" id="tab-tillbehor">
-        <div class="meny-grid">
-          <div class="meny-item"><span class="meny-item-name">Liten Pommes Frites</span><span class="meny-item-price">35 kr</span></div>
-          <div class="meny-item"><span class="meny-item-name">Stor Pommes Frites</span><span class="meny-item-price">60 kr</span></div>
-        </div>
-      </div>
-
-      <div class="meny-order-bar reveal">
-        <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="btn-primary">
-          Beställ online via Qopla
-          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- HITTA OSS -->
   <section class="hitta" id="hitta">
     <div class="hitta-inner">
@@ -1186,7 +1103,7 @@
         </div>
       </div>
       <!-- GOOGLE MAPS -->
-      <div class="hitta-map reveal" style="border-radius:4px;overflow:hidden;margin-bottom:24px;border:1px solid var(--border);">
+      <div class="hitta-map map-container reveal" style="border-radius:4px;overflow:hidden;margin-bottom:24px;border:1px solid var(--border);">
         <iframe src="https://maps.google.com/maps?q=Mejramgatan+30,+42446+Angered&output=embed" width="100%" height="400" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
       </div>
 
@@ -1195,10 +1112,10 @@
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <div>
             <div class="hitta-cta-label">Frågor eller funderingar?</div>
-            <div class="hitta-cta-email">rayanburg@gmail.com</div>
+            <div class="hitta-cta-email">dlerhadad1978@yahoo.com</div>
           </div>
         </div>
-        <a href="mailto:rayanburg@gmail.com" class="btn-white">Kontakta oss</a>
+        <a href="mailto:dlerhadad1978@yahoo.com" class="btn-white">Kontakta oss</a>
       </div>
     </div>
   </section>
@@ -1242,7 +1159,7 @@
           <ul>
             <li>
               <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              rayanburg@gmail.com
+              dlerhadad1978@yahoo.com
             </li>
             <li>
               <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>

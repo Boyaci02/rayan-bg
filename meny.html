@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meny – Rayan B&amp;G</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --black:   #0A0A0A;
+      --char:    #141414;
+      --surface: #1C1C1C;
+      --border:  rgba(255,255,255,0.08);
+      --ember:   #E8470A;
+      --ember2:  #FF6B35;
+      --white:   #F5F4F0;
+      --muted:   #888;
+      --font-head: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html, body { overflow-x: hidden; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028; pointer-events: none; z-index: 9999;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 clamp(20px,5vw,60px);
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      max-width: 1400px; margin: 0 auto; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--font-head); font-size: 1.6rem; letter-spacing: 0.04em; color: var(--white); }
+    .nav-logo span { color: var(--ember); }
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+    }
+    .nav-links a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a.active { color: var(--ember); }
+    .nav-cta {
+      background: var(--ember); color: var(--white);
+      padding: 10px 22px; border-radius: 2px;
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--ember2); transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; inset: 0;
+      background: rgba(10,10,10,0.96); backdrop-filter: blur(20px);
+      z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+      opacity: 0; transform: translateX(100%); transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .mobile-menu.open { opacity: 1; transform: translateX(0); }
+    .mobile-menu a { font-family: var(--font-head); font-size: 3rem; letter-spacing: 0.06em; color: var(--white); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--ember); }
+    .mobile-menu .mobile-cta {
+      background: var(--ember); color: var(--white);
+      padding: 14px 36px; border-radius: 2px;
+      font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 140px clamp(20px,5vw,60px) 60px;
+      max-width: 1400px; margin: 0 auto;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    }
+    .page-header h1 {
+      font-family: var(--font-head);
+      font-size: clamp(4rem,8vw,8rem);
+      line-height: 0.92; letter-spacing: 0.01em;
+      text-transform: uppercase; color: var(--white);
+    }
+    .page-header h1 span { color: var(--ember); }
+    .page-header p {
+      font-size: 0.9rem; color: var(--muted);
+      max-width: 260px; text-align: right; line-height: 1.6;
+    }
+
+    /* ─── ACCORDION ─── */
+    .accordion-wrap {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 clamp(20px,5vw,60px) 100px;
+    }
+
+    .accordion {
+      border-bottom: 1px solid var(--border);
+    }
+    .accordion:first-child { border-top: 1px solid var(--border); margin-top: 40px; }
+
+    .accordion-header {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 0; gap: 20px;
+      text-align: left;
+      transition: color 0.2s;
+    }
+    .accordion-header:hover .acc-title { color: var(--ember); }
+
+    .acc-left { display: flex; align-items: center; gap: 20px; }
+    .acc-icon { font-size: 1.8rem; line-height: 1; }
+    .acc-title {
+      font-family: var(--font-head);
+      font-size: clamp(2rem,4vw,3.5rem);
+      letter-spacing: 0.03em; text-transform: uppercase;
+      color: var(--white); line-height: 1;
+      transition: color 0.2s;
+    }
+    .acc-count {
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--muted); margin-left: 4px;
+    }
+    .acc-chevron {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border: 1px solid var(--border); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s var(--ease-out), border-color 0.2s, background 0.2s;
+    }
+    .acc-chevron svg {
+      width: 16px; height: 16px; fill: none;
+      stroke: var(--muted); stroke-width: 2;
+      transition: stroke 0.2s;
+    }
+    .accordion.open .acc-chevron {
+      transform: rotate(180deg);
+      border-color: var(--ember); background: rgba(232,71,10,0.1);
+    }
+    .accordion.open .acc-chevron svg { stroke: var(--ember); }
+
+    .accordion-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s var(--ease-out);
+    }
+    .accordion.open .accordion-body { max-height: 2000px; }
+
+    .acc-items {
+      padding-bottom: 8px;
+    }
+
+    .acc-item {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background 0.15s;
+    }
+    .acc-item:last-child { border-bottom: none; }
+    .acc-item:hover { padding-left: 12px; padding-right: 12px; margin: 0 -12px; background: rgba(232,71,10,0.04); border-radius: 2px; }
+
+    .acc-item-name {
+      font-size: 1.05rem; color: var(--white); font-weight: 400;
+      line-height: 1.3;
+    }
+    .acc-item-dots {
+      flex: 1; height: 1px;
+      background: repeating-linear-gradient(to right, rgba(255,255,255,0.12) 0, rgba(255,255,255,0.12) 3px, transparent 3px, transparent 8px);
+      min-width: 20px;
+    }
+    .acc-item-price {
+      font-family: var(--font-head);
+      font-size: 1.4rem; letter-spacing: 0.04em;
+      color: var(--ember); white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* ─── ORDER CTA ─── */
+    .order-cta {
+      max-width: 1400px; margin: 0 auto;
+      padding: 0 clamp(20px,5vw,60px) 80px;
+      text-align: center;
+    }
+    .order-cta-box {
+      background: var(--char);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: clamp(40px,5vw,64px);
+      position: relative;
+      overflow: hidden;
+    }
+    .order-cta-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 100%, rgba(232,71,10,0.12), transparent 60%);
+      pointer-events: none;
+    }
+    .order-cta-box h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2.5rem,5vw,4rem);
+      letter-spacing: 0.02em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 12px; line-height: 0.95;
+      position: relative; z-index: 1;
+    }
+    .order-cta-box h2 span { color: var(--ember); }
+    .order-cta-box p {
+      color: var(--muted); font-size: 0.9rem; margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--ember); color: var(--white);
+      padding: 16px 36px; border-radius: 2px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+      position: relative; z-index: 1;
+    }
+    .btn-primary:hover { background: var(--ember2); transform: translateY(-2px); }
+    .btn-primary svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--black); border-top: 1px solid var(--border);
+      padding: clamp(40px,5vw,60px) clamp(20px,5vw,60px) 28px;
+    }
+    .footer-inner { max-width: 1400px; margin: 0 auto; }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.06em;
+    }
+    .footer-logo-text {
+      font-family: var(--font-head); font-size: 1.4rem;
+      letter-spacing: 0.04em; color: var(--white); margin-bottom: 8px; display: block;
+    }
+    .footer-logo-text span { color: var(--ember); }
+    .footer-bottom a { color: rgba(255,255,255,0.35); }
+    .footer-bottom a:hover { color: var(--ember); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .page-header { flex-direction: column; align-items: flex-start; padding-top: 110px; }
+      .page-header p { text-align: left; }
+      .acc-item-name { font-size: 0.95rem; }
+      .acc-item-price { font-size: 1.2rem; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">RAYAN <span>B&amp;G</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#om-oss">Om oss</a></li>
+        <li><a href="meny.html" class="active">Meny</a></li>
+        <li><a href="index.html#hitta">Hitta oss</a></li>
+        <li><a href="index.html#galleri">Galleri</a></li>
+      </ul>
+      <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="nav-cta">Beställ nu</a>
+      <button class="hamburger" id="hamburger" aria-label="Öppna meny">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html#om-oss">Om oss</a>
+    <a href="meny.html">Meny</a>
+    <a href="index.html#hitta">Hitta oss</a>
+    <a href="index.html#galleri">Galleri</a>
+    <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="mobile-cta">Beställ nu</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <h1>VÅR <span>MENY</span></h1>
+    <p>Allt tillagas färskt. Beställ direkt eller kom in till oss på Mejramgatan 30, Angered.</p>
+  </header>
+
+  <!-- ACCORDION MENU -->
+  <div class="accordion-wrap">
+
+    <!-- KEBAB -->
+    <div class="accordion open" id="acc-kebab">
+      <button class="accordion-header" aria-expanded="true" aria-controls="body-kebab">
+        <div class="acc-left">
+          <span class="acc-icon">🥙</span>
+          <span class="acc-title">Kebab</span>
+          <span class="acc-count">14 rätter</span>
+        </div>
+        <div class="acc-chevron" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </button>
+      <div class="accordion-body" id="body-kebab">
+        <div class="acc-items">
+          <div class="acc-item">
+            <span class="acc-item-name">Shawarma Lamm Rulle</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">85 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kebabrulle</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">80 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Falafel Rulle</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">70 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Shawarma Lamm Tallrik</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">95 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kebabtallrik</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">90 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Falafel Tallrik</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">70 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Shawarma Lamm Sallad</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">95 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kebabsallad</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">90 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Falafel Sallad</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">85 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Shawarma Lamm Pitabröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">85 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kebab i Pitabröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">80 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Falafel i Pitabröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">75 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Shawarma Lamm Special Bröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">90 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Falafel Special Bröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">75 kr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRILLEN -->
+    <div class="accordion open" id="acc-grillen">
+      <button class="accordion-header" aria-expanded="true" aria-controls="body-grillen">
+        <div class="acc-left">
+          <span class="acc-icon">🔥</span>
+          <span class="acc-title">Grillen</span>
+          <span class="acc-count">6 rätter</span>
+        </div>
+        <div class="acc-chevron" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </button>
+      <div class="accordion-body" id="body-grillen">
+        <div class="acc-items">
+          <div class="acc-item">
+            <span class="acc-item-name">Shish Kebab med Bröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">90 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Lammspett med Bröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">90 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kycklingspett med Bröd</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">90 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Shish Kebab Tallrik</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">95 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Lammspett Tallrik</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">95 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kycklingspett Tallrik</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">95 kr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HAMBURGARE -->
+    <div class="accordion open" id="acc-hamburgare">
+      <button class="accordion-header" aria-expanded="true" aria-controls="body-hamburgare">
+        <div class="acc-left">
+          <span class="acc-icon">🍔</span>
+          <span class="acc-title">Hamburgare</span>
+          <span class="acc-count">2 rätter</span>
+        </div>
+        <div class="acc-chevron" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </button>
+      <div class="accordion-body" id="body-hamburgare">
+        <div class="acc-items">
+          <div class="acc-item">
+            <span class="acc-item-name">Hamburgare</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">från 80 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Kyckling Hamburgare</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">från 85 kr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VARMRÄTTER -->
+    <div class="accordion open" id="acc-varmratter">
+      <button class="accordion-header" aria-expanded="true" aria-controls="body-varmratter">
+        <div class="acc-left">
+          <span class="acc-icon">🍽️</span>
+          <span class="acc-title">Varmrätter</span>
+          <span class="acc-count">2 rätter</span>
+        </div>
+        <div class="acc-chevron" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </button>
+      <div class="accordion-body" id="body-varmratter">
+        <div class="acc-items">
+          <div class="acc-item">
+            <span class="acc-item-name">Linssoppa</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">40 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Lablabi med Kött</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">50 kr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TILLBEHÖR -->
+    <div class="accordion open" id="acc-tillbehor">
+      <button class="accordion-header" aria-expanded="true" aria-controls="body-tillbehor">
+        <div class="acc-left">
+          <span class="acc-icon">🥗</span>
+          <span class="acc-title">Tillbehör</span>
+          <span class="acc-count">2 rätter</span>
+        </div>
+        <div class="acc-chevron" aria-hidden="true">
+          <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </button>
+      <div class="accordion-body" id="body-tillbehor">
+        <div class="acc-items">
+          <div class="acc-item">
+            <span class="acc-item-name">Liten Pommes Frites</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">35 kr</span>
+          </div>
+          <div class="acc-item">
+            <span class="acc-item-name">Stor Pommes Frites</span>
+            <span class="acc-item-dots"></span>
+            <span class="acc-item-price">60 kr</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ORDER CTA -->
+  <div class="order-cta">
+    <div class="order-cta-box">
+      <h2>BESTÄLL <span>ONLINE</span></h2>
+      <p>Snabbt och enkelt via Qopla — hämtning eller leverans.</p>
+      <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="btn-primary">
+        Gå till beställning
+        <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <div>
+          <span class="footer-logo-text">RAYAN <span>B&amp;G</span></span>
+          <span>© 2026 Rayan B&amp;G. Alla rättigheter förbehållna.</span>
+        </div>
+        <span>Powered by <a href="https://synsnumedia.se/" target="_blank" rel="noopener">SynsNu</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── HAMBURGER ───
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ─── ACCORDION ───
+    document.querySelectorAll('.accordion-header').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const acc = btn.closest('.accordion');
+        const isOpen = acc.classList.contains('open');
+        acc.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  </script>
+</body>
+</html>
