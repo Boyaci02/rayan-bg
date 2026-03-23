@@ -764,54 +764,66 @@
       line-height: 0.95;
     }
     .meny-head h2 span { color: var(--ember); }
-    .meny-categories {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+    /* ─── MENU TABS ─── */
+    .meny-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
     }
-    .meny-cat {
+    .meny-tab {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 28px 20px;
-      text-align: center;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .meny-cat::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--ember);
-      transform: scaleX(0);
-      transition: transform 0.3s var(--ease-out);
-    }
-    .meny-cat:hover {
-      border-color: rgba(232,71,10,0.4);
-      background: rgba(232,71,10,0.05);
-      transform: translateY(-3px);
-    }
-    .meny-cat:hover::before { transform: scaleX(1); }
-    .meny-cat-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .meny-cat-name {
+      border-radius: 2px;
+      padding: 10px 22px;
       font-family: var(--font-head);
-      font-size: 1.2rem;
-      letter-spacing: 0.06em;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .meny-tab:hover { color: var(--white); border-color: rgba(232,71,10,0.4); }
+    .meny-tab.active {
+      background: var(--ember);
+      border-color: var(--ember);
       color: var(--white);
     }
-    .meny-cat-desc {
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-top: 6px;
+    .meny-panel { display: none; }
+    .meny-panel.active { display: block; }
+    .meny-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2px;
+    }
+    .meny-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .meny-item:hover { background: rgba(232,71,10,0.06); }
+    .meny-item-name {
+      font-size: 0.9rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+    .meny-item-price {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
       letter-spacing: 0.04em;
+      color: var(--ember);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .meny-order-bar {
+      margin-top: 40px;
+      text-align: center;
     }
 
     /* ─── FOOTER ─── */
@@ -906,7 +918,7 @@
       .about-img-badge { left: 16px; }
       .about-img-line { display: none; }
       .hitta-cards { grid-template-columns: 1fr; }
-      .meny-categories { grid-template-columns: repeat(3, 1fr); }
+      .meny-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
       .footer-brand { grid-column: 1 / -1; }
     }
@@ -919,12 +931,13 @@
         flex-direction: column;
         align-items: flex-start;
       }
-      .meny-categories { grid-template-columns: repeat(2, 1fr); }
+
       .footer-top { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
     @media (max-width: 480px) {
-      .meny-categories { grid-template-columns: 1fr 1fr; }
+      .meny-tabs { gap: 6px; }
+      .meny-tab { padding: 8px 14px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -940,7 +953,7 @@
         <li><a href="#hitta">Hitta oss</a></li>
         <li><a href="#galleri">Galleri</a></li>
       </ul>
-      <a href="tel:+46000000000" class="nav-cta">Beställ nu</a>
+      <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="nav-cta">Beställ nu</a>
       <button class="hamburger" id="hamburger" aria-label="Öppna meny">
         <span></span><span></span><span></span>
       </button>
@@ -953,7 +966,7 @@
     <a href="#meny">Meny</a>
     <a href="#hitta">Hitta oss</a>
     <a href="#galleri">Galleri</a>
-    <a href="tel:+46000000000" class="mobile-cta">Beställ nu</a>
+    <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="mobile-cta">Beställ nu</a>
   </div>
 
   <!-- HERO -->
@@ -1056,37 +1069,82 @@
     <div class="meny-inner">
       <div class="meny-head reveal">
         <h2>VÅR <span>MENY</span></h2>
-        <a href="#" class="btn-ghost">
-          Se fullständig meny
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M1 6h10M7 2l4 4-4 4"/></svg>
+        <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="btn-primary" style="font-size:0.75rem;padding:12px 24px;">
+          Beställ online
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
-      <div class="meny-categories">
-        <div class="meny-cat reveal reveal-delay-1">
-          <span class="meny-cat-icon">🥙</span>
-          <div class="meny-cat-name">Kebab</div>
-          <div class="meny-cat-desc">Klassik & special</div>
+
+      <!-- TABS -->
+      <div class="meny-tabs reveal">
+        <button class="meny-tab active" data-tab="kebab">🥙 Kebab</button>
+        <button class="meny-tab" data-tab="grillen">🔥 Grillen</button>
+        <button class="meny-tab" data-tab="hamburgare">🍔 Hamburgare</button>
+        <button class="meny-tab" data-tab="varmratter">🍽️ Varmrätter</button>
+        <button class="meny-tab" data-tab="tillbehor">🥗 Tillbehör</button>
+      </div>
+
+      <!-- KEBAB -->
+      <div class="meny-panel active" id="tab-kebab">
+        <div class="meny-grid">
+          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Rulle</span><span class="meny-item-price">85 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kebabrulle</span><span class="meny-item-price">80 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Falafel Rulle</span><span class="meny-item-price">70 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Tallrik</span><span class="meny-item-price">95 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kebabtallrik</span><span class="meny-item-price">90 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Falafel Tallrik</span><span class="meny-item-price">70 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Sallad</span><span class="meny-item-price">95 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kebabsallad</span><span class="meny-item-price">90 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Falafel Sallad</span><span class="meny-item-price">85 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Pitabröd</span><span class="meny-item-price">85 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kebab i Pitabröd</span><span class="meny-item-price">80 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Falafel i Pitabröd</span><span class="meny-item-price">75 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Shawarma Lamm Special Bröd</span><span class="meny-item-price">90 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Falafel Special Bröd</span><span class="meny-item-price">75 kr</span></div>
         </div>
-        <div class="meny-cat reveal reveal-delay-2">
-          <span class="meny-cat-icon">🔥</span>
-          <div class="meny-cat-name">Grillen</div>
-          <div class="meny-cat-desc">Kött & kycklingrätter</div>
+      </div>
+
+      <!-- GRILLEN -->
+      <div class="meny-panel" id="tab-grillen">
+        <div class="meny-grid">
+          <div class="meny-item"><span class="meny-item-name">Shish Kebab med Bröd</span><span class="meny-item-price">90 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Lammspett med Bröd</span><span class="meny-item-price">90 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kycklingspett med Bröd</span><span class="meny-item-price">90 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Shish Kebab Tallrik</span><span class="meny-item-price">95 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Lammspett Tallrik</span><span class="meny-item-price">95 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kycklingspett Tallrik</span><span class="meny-item-price">95 kr</span></div>
         </div>
-        <div class="meny-cat reveal reveal-delay-3">
-          <span class="meny-cat-icon">🍔</span>
-          <div class="meny-cat-name">Hamburgare</div>
-          <div class="meny-cat-desc">Saftiga burgare</div>
+      </div>
+
+      <!-- HAMBURGARE -->
+      <div class="meny-panel" id="tab-hamburgare">
+        <div class="meny-grid">
+          <div class="meny-item"><span class="meny-item-name">Hamburgare</span><span class="meny-item-price">från 80 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Kyckling Hamburgare</span><span class="meny-item-price">från 85 kr</span></div>
         </div>
-        <div class="meny-cat reveal reveal-delay-1">
-          <span class="meny-cat-icon">🍽️</span>
-          <div class="meny-cat-name">Varmrätter</div>
-          <div class="meny-cat-desc">Dagens rätter</div>
+      </div>
+
+      <!-- VARMRÄTTER -->
+      <div class="meny-panel" id="tab-varmratter">
+        <div class="meny-grid">
+          <div class="meny-item"><span class="meny-item-name">Linssoppa</span><span class="meny-item-price">40 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Lablabi med Kött</span><span class="meny-item-price">50 kr</span></div>
         </div>
-        <div class="meny-cat reveal reveal-delay-2">
-          <span class="meny-cat-icon">🥗</span>
-          <div class="meny-cat-name">Tillbehör</div>
-          <div class="meny-cat-desc">Sallader & såser</div>
+      </div>
+
+      <!-- TILLBEHÖR -->
+      <div class="meny-panel" id="tab-tillbehor">
+        <div class="meny-grid">
+          <div class="meny-item"><span class="meny-item-name">Liten Pommes Frites</span><span class="meny-item-price">35 kr</span></div>
+          <div class="meny-item"><span class="meny-item-name">Stor Pommes Frites</span><span class="meny-item-price">60 kr</span></div>
         </div>
+      </div>
+
+      <div class="meny-order-bar reveal">
+        <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="btn-primary">
+          Beställ online via Qopla
+          <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -1127,6 +1185,11 @@
           </div>
         </div>
       </div>
+      <!-- GOOGLE MAPS -->
+      <div class="hitta-map reveal" style="border-radius:4px;overflow:hidden;margin-bottom:24px;border:1px solid var(--border);">
+        <iframe src="https://maps.google.com/maps?q=Mejramgatan+30,+42446+Angered&output=embed" width="100%" height="400" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
       <div class="hitta-cta reveal">
         <div class="hitta-cta-left">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -1196,7 +1259,7 @@
       </div>
       <div class="footer-bottom">
         <span>© 2026 Rayan B&amp;G. Alla rättigheter förbehållna.</span>
-        <span>Powered by <a href="https://visuanza.se" target="_blank" rel="noopener">Visuanza</a></span>
+        <span>Powered by <a href="https://synsnumedia.se/" target="_blank" rel="noopener">SynsNu</a></span>
       </div>
     </div>
   </footer>
@@ -1267,6 +1330,17 @@
         openIndicator.style.filter = 'hue-rotate(120deg)';
       }
     }
+
+    // ─── MENU TABS ───
+    document.querySelectorAll('.meny-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.meny-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.meny-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + target).classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
