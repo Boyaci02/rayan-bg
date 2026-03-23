@@ -17,7 +17,7 @@
       --ember:   #E8470A;
       --ember2:  #FF6B35;
       --white:   #F5F4F0;
-      --muted:   #888;
+      --muted:   #b0b0b0;
       --font-head: 'Bebas Neue', sans-serif;
       --font-body: 'DM Sans', sans-serif;
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -62,7 +62,7 @@
       display: flex; gap: 36px; list-style: none;
       font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
     }
-    .nav-links a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .nav-links a { color: rgba(255,255,255,0.75); transition: color 0.2s; }
     .nav-links a:hover, .nav-links a.active { color: var(--white); }
     .nav-links a.active { color: var(--ember); }
     .nav-cta {
@@ -147,7 +147,7 @@
       transition: color 0.2s;
     }
     .acc-count {
-      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+      font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--muted); margin-left: 4px;
     }
     .acc-chevron {
@@ -253,14 +253,14 @@
     .footer-inner { max-width: 1400px; margin: 0 auto; }
     .footer-bottom {
       display: flex; align-items: center; justify-content: space-between;
-      font-size: 0.72rem; color: rgba(255,255,255,0.25); letter-spacing: 0.06em;
+      font-size: 0.8rem; color: rgba(255,255,255,0.45); letter-spacing: 0.06em;
     }
     .footer-logo-text {
       font-family: var(--font-head); font-size: 1.4rem;
       letter-spacing: 0.04em; color: var(--white); margin-bottom: 8px; display: block;
     }
     .footer-logo-text span { color: var(--ember); }
-    .footer-bottom a { color: rgba(255,255,255,0.35); }
+    .footer-bottom a { color: rgba(255,255,255,0.6); }
     .footer-bottom a:hover { color: var(--ember); }
 
     /* ─── RESPONSIVE ─── */
@@ -314,8 +314,8 @@
   <div class="accordion-wrap">
 
     <!-- KEBAB -->
-    <div class="accordion open" id="acc-kebab">
-      <button class="accordion-header" aria-expanded="true" aria-controls="body-kebab">
+    <div class="accordion" id="acc-kebab">
+      <button class="accordion-header" aria-expanded="false" aria-controls="body-kebab">
         <div class="acc-left">
           <span class="acc-icon">🥙</span>
           <span class="acc-title">Kebab</span>
@@ -402,8 +402,8 @@
     </div>
 
     <!-- GRILLEN -->
-    <div class="accordion open" id="acc-grillen">
-      <button class="accordion-header" aria-expanded="true" aria-controls="body-grillen">
+    <div class="accordion" id="acc-grillen">
+      <button class="accordion-header" aria-expanded="false" aria-controls="body-grillen">
         <div class="acc-left">
           <span class="acc-icon">🔥</span>
           <span class="acc-title">Grillen</span>
@@ -450,8 +450,8 @@
     </div>
 
     <!-- HAMBURGARE -->
-    <div class="accordion open" id="acc-hamburgare">
-      <button class="accordion-header" aria-expanded="true" aria-controls="body-hamburgare">
+    <div class="accordion" id="acc-hamburgare">
+      <button class="accordion-header" aria-expanded="false" aria-controls="body-hamburgare">
         <div class="acc-left">
           <span class="acc-icon">🍔</span>
           <span class="acc-title">Hamburgare</span>
@@ -478,8 +478,8 @@
     </div>
 
     <!-- VARMRÄTTER -->
-    <div class="accordion open" id="acc-varmratter">
-      <button class="accordion-header" aria-expanded="true" aria-controls="body-varmratter">
+    <div class="accordion" id="acc-varmratter">
+      <button class="accordion-header" aria-expanded="false" aria-controls="body-varmratter">
         <div class="acc-left">
           <span class="acc-icon">🍽️</span>
           <span class="acc-title">Varmrätter</span>
@@ -506,8 +506,8 @@
     </div>
 
     <!-- TILLBEHÖR -->
-    <div class="accordion open" id="acc-tillbehor">
-      <button class="accordion-header" aria-expanded="true" aria-controls="body-tillbehor">
+    <div class="accordion" id="acc-tillbehor">
+      <button class="accordion-header" aria-expanded="false" aria-controls="body-tillbehor">
         <div class="acc-left">
           <span class="acc-icon">🥗</span>
           <span class="acc-title">Tillbehör</span>
