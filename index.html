@@ -1248,22 +1248,22 @@
     }
 
     // ─── ACTIVE NAV ON SCROLL ───
-    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-    const sectionMap = {};
-    navLinks.forEach(a => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el) sectionMap[id] = a;
-    });
+    // rootMargin fires when a section crosses ~25% from the top of the viewport.
+    // Hero is also observed so it can clear all active states.
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.isIntersecting && sectionMap[e.target.id]) {
-          navLinks.forEach(a => a.classList.remove('active'));
-          sectionMap[e.target.id].classList.add('active');
-        }
+        if (!e.isIntersecting) return;
+        navAnchors.forEach(a => a.classList.remove('active'));
+        if (e.target.id === 'hero') return; // hero = no link highlighted
+        const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
       });
-    }, { threshold: 0.35 });
-    Object.keys(sectionMap).forEach(id => sectionObserver.observe(document.getElementById(id)));
+    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+    ['hero', 'om-oss', 'hitta', 'galleri'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sectionObserver.observe(el);
+    });
 
     // ─── MENU TABS ───
     document.querySelectorAll('.meny-tab').forEach(tab => {
