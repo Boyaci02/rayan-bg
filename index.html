@@ -340,16 +340,28 @@
       position: relative;
       z-index: 1;
     }
+
     .ticker-track {
       display: flex;
       width: max-content;
       animation: tickerScroll 22s linear infinite;
     }
-    .ticker-track:hover { animation-play-state: paused; }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    .ticker-group {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+    }
+
     @keyframes tickerScroll {
       0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(-33%); }
     }
+
     .ticker-item {
       display: flex;
       align-items: center;
@@ -361,6 +373,7 @@
       letter-spacing: 0.12em;
       color: var(--white);
     }
+
     .ticker-dot {
       display: inline-block;
       width: 5px;
@@ -1003,24 +1016,45 @@
     </div>
   </section>
 
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <!-- 2× content for seamless loop -->
-      <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
-      <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
-      <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
-      <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
-      <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
-      <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
-      <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
-      <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
-      <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
-      <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
-      <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
-      <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-group">
+          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
+          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
+          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
+          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
+          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
+          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
+        </div>
+
+        <div class="ticker-group">
+          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
+          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
+          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
+          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
+          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
+          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
+        </div>
+
+        <div class="ticker-group">
+          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
+          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
+          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
+          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
+          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
+          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
+        </div>
+
+        <div class="ticker-group">
+          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
+          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
+          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
+          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
+          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
+          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
+        </div>
+      </div>
     </div>
-  </div>
 
   <!-- ABOUT -->
   <section class="about" id="om-oss">
