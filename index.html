@@ -30,15 +30,15 @@
       overflow-x: hidden;
     }
 
-    /* FIRE CANVAS */
-    #fire-canvas {
+    /* HERO VIDEO */
+    #hero-video {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
+      object-fit: cover;
       z-index: 1;
-      opacity: 0.55;
-      mix-blend-mode: screen;
+      opacity: 0.6;
     }
 
     /* NAV */
@@ -474,7 +474,9 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-bg"></div>
-    <canvas id="fire-canvas"></canvas>
+    <video id="hero-video" autoplay muted loop playsinline>
+      <source src="https://assets.cdn.filesafe.space/1FYpgqYgXr6SzFnCzKew/media/69d51091ebf1a60843fbf96f.mp4" type="video/mp4">
+    </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-tag">ANGERED · GÖTEBORG</div>
@@ -595,106 +597,6 @@
   </footer>
 
   <script>
-    // Fire simulation
-    (function() {
-      const canvas = document.getElementById('fire-canvas');
-      const ctx = canvas.getContext('2d');
-      let W, H, cols, rows, buf, buf2;
-
-      const SCALE = 4; // pixel size of each fire cell
-
-      // Fire palette: black → dark red → orange → yellow → white
-      const palette = [];
-      for (let i = 0; i < 256; i++) {
-        let r, g, b;
-        if (i < 64) {
-          r = i * 3; g = 0; b = 0;
-        } else if (i < 128) {
-          r = 192 + (i - 64); g = (i - 64) * 2; b = 0;
-        } else if (i < 192) {
-          r = 255; g = 128 + (i - 128) * 2; b = 0;
-        } else {
-          r = 255; g = 255; b = (i - 192) * 4;
-        }
-        palette.push([
-          Math.min(255, r),
-          Math.min(255, g),
-          Math.min(255, b)
-        ]);
-      }
-
-      function resize() {
-        W = canvas.offsetWidth;
-        H = canvas.offsetHeight;
-        canvas.width = W;
-        canvas.height = H;
-        cols = Math.ceil(W / SCALE);
-        rows = Math.ceil(H / SCALE);
-        buf = new Uint8Array(cols * rows);
-        buf2 = new Uint8Array(cols * rows);
-        // Seed bottom row with full fire
-        for (let x = 0; x < cols; x++) {
-          buf[(rows - 1) * cols + x] = 255;
-        }
-      }
-
-      function step() {
-        // Seed bottom 2 rows
-        for (let x = 0; x < cols; x++) {
-          const v = Math.random() > 0.05 ? 200 + Math.random() * 55 | 0 : 0;
-          buf[(rows - 1) * cols + x] = 255;
-          if (rows > 1) buf[(rows - 2) * cols + x] = v;
-        }
-
-        // Spread fire upward
-        for (let y = 0; y < rows - 1; y++) {
-          for (let x = 0; x < cols; x++) {
-            const below = buf[(y + 1) * cols + x];
-            const spread = (Math.random() * 3 | 0);
-            const nx = x - 1 + spread;
-            const decay = (Math.random() * 2 | 0) + 1;
-            const ny = y + (Math.random() > 0.5 ? 0 : -1);
-            if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
-              buf2[ny * cols + nx] = Math.max(0, below - decay);
-            }
-          }
-        }
-
-        // Swap buffers
-        const tmp = buf; buf = buf2; buf2 = tmp;
-        buf2.fill(0);
-      }
-
-      function draw() {
-        const img = ctx.createImageData(cols, rows);
-        const d = img.data;
-        for (let i = 0; i < cols * rows; i++) {
-          const v = buf[i];
-          const c = palette[v];
-          d[i * 4]     = c[0];
-          d[i * 4 + 1] = c[1];
-          d[i * 4 + 2] = c[2];
-          d[i * 4 + 3] = v > 5 ? 255 : 0;
-        }
-        // Draw scaled up
-        const tmp = document.createElement('canvas');
-        tmp.width = cols; tmp.height = rows;
-        tmp.getContext('2d').putImageData(img, 0, 0);
-        ctx.clearRect(0, 0, W, H);
-        ctx.drawImage(tmp, 0, 0, W, H);
-      }
-
-      function loop() {
-        step();
-        draw();
-        requestAnimationFrame(loop);
-      }
-
-      window.addEventListener('resize', resize);
-      resize();
-      loop();
-    })();
-
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('open');
     }
