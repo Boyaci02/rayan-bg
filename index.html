@@ -56,12 +56,10 @@
       justify-content: space-between;
     }
 
-    .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      text-decoration: none;
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      display: block;
     }
 
     .nav-links {
@@ -112,28 +110,59 @@
     }
 
     .mobile-menu {
-      display: none;
       position: fixed;
-      top: 64px; left: 0; right: 0;
-      background: var(--dark);
-      border-bottom: 1px solid rgba(255,215,0,0.15);
-      padding: 1.5rem;
+      top: 0; right: 0; bottom: 0;
+      width: 100%;
+      background: #0d0d0d;
+      display: flex;
       flex-direction: column;
-      gap: 1rem;
-      z-index: 99;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
-    .mobile-menu.open { display: flex; }
+    .mobile-menu.open { transform: translateX(0); }
+
+    .mobile-menu-logo {
+      width: 120px;
+      margin-bottom: 2.5rem;
+    }
 
     .mobile-menu a {
+      font-family: 'Bebas Neue', sans-serif;
       color: var(--white);
       text-decoration: none;
-      font-size: 1.1rem;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 2.5rem;
+      letter-spacing: 4px;
+      padding: 0.6rem 0;
+      transition: color 0.2s;
+      text-align: center;
     }
 
-    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .mobile-menu-cta {
+      margin-top: 2rem;
+      background: var(--gold) !important;
+      color: var(--black) !important;
+      padding: 0.8rem 2.5rem !important;
+      border-radius: 4px;
+      font-size: 1.3rem !important;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 1.2rem; right: 1.2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu-close svg { display: block; }
 
     /* HERO */
     .hero {
@@ -452,7 +481,7 @@
 
   <!-- NAV -->
   <nav>
-    <a href="index.html" class="nav-logo">RAYAN B&G</a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="Rayan B&G"></a>
     <ul class="nav-links">
       <li><a href="#featured">Rätter</a></li>
       <li><a href="meny.html">Meny</a></li>
@@ -465,10 +494,16 @@
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" onclick="closeMenu()" aria-label="Stäng meny">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <img src="images/logo.png" alt="Rayan B&G" class="mobile-menu-logo">
     <a href="#featured" onclick="closeMenu()">Rätter</a>
-    <a href="meny.html">Meny</a>
+    <a href="meny.html" onclick="closeMenu()">Meny</a>
     <a href="#info" onclick="closeMenu()">Hitta oss</a>
-    <a href="meny.html" style="color:var(--gold);font-weight:700;">Se hela menyn →</a>
+    <a href="meny.html" class="mobile-menu-cta">Se hela menyn</a>
   </div>
 
   <!-- HERO -->
@@ -479,6 +514,7 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <div class="hero-tag">ANGERED · GÖTEBORG</div>
+      <img src="images/logo.png" alt="Rayan B&G" style="width:180px;max-width:50vw;margin:0 auto 1rem;display:block;filter:drop-shadow(0 4px 24px rgba(0,0,0,0.7));">
       <h1 class="hero-title">RAYAN<br><span>B&amp;G</span></h1>
       <p class="hero-sub">Göteborg Bästa Falafel &nbsp;◆&nbsp; Kebab &nbsp;◆&nbsp; Grill &nbsp;◆&nbsp; Burger</p>
       <div class="hero-actions">
@@ -573,7 +609,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">RAYAN B&amp;G</div>
+    <img src="images/logo.png" alt="Rayan B&G" style="width:90px;margin:0 auto 0.75rem;display:block;opacity:0.9;">
     <p class="footer-tagline">GÖTEBORG BÄSTA FALAFEL</p>
     <div class="footer-links">
       <a href="#featured">Rätter</a>
@@ -585,14 +621,14 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById('mobileMenu').classList.toggle('open');
+      const m = document.getElementById('mobileMenu');
+      m.classList.toggle('open');
+      document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
     }
     function closeMenu() {
       document.getElementById('mobileMenu').classList.remove('open');
+      document.body.style.overflow = '';
     }
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) closeMenu();
-    });
 
     const statusEl = document.getElementById('open-status');
     const now = new Date();
