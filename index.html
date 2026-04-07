@@ -1,118 +1,88 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rayan B&amp;G – Kebab, Grill &amp; Burgare i Angered</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%23111'/><text y='.9em' font-size='45' font-family='Arial Black,sans-serif' font-weight='900' fill='%23E8470A' x='50%25' text-anchor='middle' dominant-baseline='hanging' dy='10'>B%26G</text></svg>">
-  <meta name="description" content="Rayan B&G i Angered – kebab, grillade rätter, hamburgare och mer. Öppet varje dag 10:00–21:00. Mejramgatan 30, 42446 Angered.">
-  <meta name="keywords" content="Rayan B&G, kebab Angered, grill Angered, hamburgare Angered, shawarma, falafel, restaurang Angered, Mejramgatan">
-  <meta property="og:title" content="Rayan B&G – Kebab, Grill & Burgare i Angered">
-  <meta property="og:description" content="Smaken av Rayan – kebab, grillade rätter och burgare lagade med passion. Besök oss på Mejramgatan 30, Angered.">
-  <meta property="og:type" content="restaurant">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://rayanb-g.vercel.app/">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rayan B&G – Göteborg Bästa Falafel</title>
+  <meta name="description" content="Rayan B&G – Kebab, Grill & Burger i Angered, Göteborg. Göteborg Bästa Falafel. Öppet 10–21 varje dag.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ─── TOKENS ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --black:   #0A0A0A;
-      --char:    #141414;
-      --surface: #1C1C1C;
-      --border:  rgba(255,255,255,0.08);
-      --ember:   #E8470A;
-      --ember2:  #FF6B35;
-      --white:   #F5F4F0;
-      --muted:   #b0b0b0;
-      --font-head: 'Bebas Neue', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --gold: #FFD700;
+      --orange: #FF6B00;
+      --black: #0d0d0d;
+      --dark: #161616;
+      --card: #1a1a1a;
+      --white: #ffffff;
+      --gray: #aaaaaa;
     }
 
-    /* ─── RESET ─── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    html, body { overflow-x: hidden; }
+
     body {
       background: var(--black);
       color: var(--white);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-
-    /* ─── GRAIN OVERLAY ─── */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.028;
-      pointer-events: none;
-      z-index: 9999;
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 0 clamp(20px,5vw,60px);
-      transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,0.92);
-      backdrop-filter: blur(16px);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.06);
-    }
-    .nav-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      height: 68px;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,215,0,0.15);
+      padding: 0 1.5rem;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
+
     .nav-logo {
-      font-family: var(--font-head);
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 1.6rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-decoration: none;
     }
-    .nav-logo span { color: var(--ember); }
+
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 2rem;
       list-style: none;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
     }
+
     .nav-links a {
-      color: rgba(255,255,255,0.75);
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a.active { color: var(--ember); }
-    .nav-cta {
-      background: var(--ember);
-      color: var(--white);
-      padding: 10px 22px;
-      border-radius: 2px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .nav-cta:hover { background: var(--ember2); transform: translateY(-1px); }
 
-    /* ─── HAMBURGER ─── */
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.5rem 1.2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: #e6c200; }
+
     .hamburger {
       display: none;
       flex-direction: column;
@@ -122,1193 +92,512 @@
       border: none;
       padding: 4px;
     }
+
     .hamburger span {
       display: block;
       width: 24px;
       height: 2px;
-      background: var(--white);
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      background: var(--gold);
     }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    /* Mobile menu */
     .mobile-menu {
       display: none;
       position: fixed;
-      inset: 0;
-      background: rgba(10,10,10,0.96);
-      backdrop-filter: blur(20px);
-      z-index: 99;
+      top: 64px; left: 0; right: 0;
+      background: var(--dark);
+      border-bottom: 1px solid rgba(255,215,0,0.15);
+      padding: 1.5rem;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    .mobile-menu.open {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .mobile-menu a {
-      font-family: var(--font-head);
-      font-size: 3rem;
-      letter-spacing: 0.06em;
-      color: var(--white);
-      transition: color 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--ember); }
-    .mobile-menu .mobile-cta {
-      background: var(--ember);
-      color: var(--white);
-      padding: 14px 36px;
-      border-radius: 2px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      gap: 1rem;
+      z-index: 99;
     }
 
-    /* ─── HERO ─── */
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* HERO */
     .hero {
       position: relative;
-      height: 100vh;
-      min-height: 620px;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-end;
-      padding-bottom: clamp(60px,8vh,100px);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       overflow: hidden;
     }
 
-    /* Video background */
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .hero-video video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Gradient overlay on top of video */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 80% 70% at 60% 80%, rgba(232,71,10,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 20% 30%, rgba(255,107,53,0.06) 0%, transparent 50%),
-        linear-gradient(160deg, rgba(10,10,10,0.72) 0%, rgba(26,12,5,0.58) 50%, rgba(10,10,10,0.72) 100%);
-      z-index: 1;
+      background-image: url('images/banner.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35);
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 clamp(20px,5vw,60px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: flex-end;
-      gap: 40px;
-    }
-    .hero-left {}
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ember);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 1px;
-      background: var(--ember);
-    }
-    .hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(5rem, 11vw, 10rem);
-      line-height: 0.92;
-      letter-spacing: 0.01em;
-      color: var(--white);
-      text-transform: uppercase;
-      margin-bottom: 32px;
-    }
-    .hero h1 .outline {
-      -webkit-text-stroke: 2px var(--ember);
-      color: transparent;
-    }
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--ember);
-      color: var(--white);
-      padding: 14px 32px;
-      border-radius: 2px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      transition: background 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { background: var(--ember2); transform: translateY(-2px); }
-    .btn-primary svg { width: 14px; height: 14px; fill: currentColor; }
-    .hero-sub {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      letter-spacing: 0.06em;
-    }
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 20px;
-      padding-bottom: 8px;
-    }
-    .hero-tag {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 2px;
-      padding: 10px 18px;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.72);
-    }
-    .hero-tag strong {
-      display: block;
-      font-family: var(--font-head);
-      font-size: 1.8rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 1;
-      margin-top: 2px;
-    }
-    .hero-scroll {
+    .hero-overlay {
       position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      z-index: 2;
-    }
-    .hero-scroll span {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-    }
-    .scroll-line {
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(to bottom, var(--ember), transparent);
-      animation: scrollPulse 2s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.1); }
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(13,13,13,0.2) 0%, rgba(13,13,13,0.7) 100%);
     }
 
-    /* ─── TICKER ─── */
-    .ticker {
-      background: var(--ember);
-      overflow: hidden;
-      padding: 14px 0;
+    .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      padding: 2rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      padding: 0.3rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      line-height: 0.9;
+      color: var(--white);
+      letter-spacing: 4px;
+    }
+
+    .hero-title span { color: var(--gold); }
+
+    .hero-sub {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+    }
+
+    .hero-actions {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: #e6c200; transform: translateY(-1px); }
+
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.4);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* TICKER */
+    .ticker {
+      background: var(--gold);
+      color: var(--black);
+      overflow: hidden;
+      padding: 0.7rem 0;
+      white-space: nowrap;
     }
 
     .ticker-track {
-      display: flex;
-      width: max-content;
-      animation: tickerScroll 22s linear infinite;
+      display: inline-flex;
+      animation: ticker 35s linear infinite;
     }
 
-    .ticker-track:hover {
-      animation-play-state: paused;
+    .ticker-track span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      padding: 0 2rem;
     }
 
-    .ticker-group {
-      display: flex;
-      flex-shrink: 0;
-      align-items: center;
+    .ticker-track span::after {
+      content: ' ◆';
     }
 
-    @keyframes tickerScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-33%); }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
-    .ticker-item {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      white-space: nowrap;
-      padding: 0 28px;
-      font-family: var(--font-head);
-      font-size: 1.15rem;
-      letter-spacing: 0.12em;
-      color: var(--white);
-    }
+    /* SECTIONS */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
 
-    .ticker-dot {
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.5);
-      margin: 0 18px;
-      flex-shrink: 0;
-    }
-
-    /* ─── ABOUT ─── */
-    .about {
-      padding: clamp(80px,10vw,140px) clamp(20px,5vw,60px);
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(40px,6vw,100px);
-      align-items: center;
-    }
-    .about-left {}
     .section-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ember);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
     }
-    .section-label::before {
-      content: '';
-      width: 24px;
-      height: 1px;
-      background: var(--ember);
-      flex-shrink: 0;
-    }
-    .about h2 {
-      font-family: var(--font-head);
-      font-size: clamp(3rem, 5.5vw, 5.5rem);
-      line-height: 0.95;
-      letter-spacing: 0.01em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 28px;
-    }
-    .about h2 em {
-      font-style: normal;
-      color: var(--ember);
-    }
-    .about p {
-      color: rgba(255,255,255,0.78);
-      font-size: 1rem;
-      line-height: 1.8;
-      max-width: 440px;
-      margin-bottom: 16px;
-    }
-    .about-stats {
-      display: flex;
-      gap: 40px;
-      margin-top: 36px;
-      padding-top: 36px;
-      border-top: 1px solid var(--border);
-    }
-    .stat-item {}
-    .stat-num {
-      font-family: var(--font-head);
-      font-size: 2.8rem;
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
       line-height: 1;
-      color: var(--white);
-      letter-spacing: 0.02em;
+      margin-bottom: 3rem;
     }
-    .stat-num span { color: var(--ember); }
-    .stat-lbl {
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 4px;
+
+    /* FEATURED GRID */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: #222;
     }
-    .about-right {
+
+    .food-card {
       position: relative;
-    }
-    .about-img-wrap {
-      position: relative;
-      border-radius: 4px;
+      aspect-ratio: 1;
       overflow: hidden;
-      aspect-ratio: 4/5;
-      background: var(--surface);
     }
-    .about-img {
+
+    .food-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: grayscale(100%) brightness(0.85);
-      transition: filter 1.4s var(--ease-out), transform 1.4s var(--ease-out);
-      transform: scale(1.04);
-    }
-    .about-img-wrap.revealed .about-img {
-      filter: grayscale(0%) brightness(1);
-      transform: scale(1);
-    }
-    .about-img-badge {
-      position: absolute;
-      bottom: 24px;
-      left: -24px;
-      background: var(--ember);
-      color: var(--white);
-      padding: 14px 22px;
-      border-radius: 2px;
-      font-family: var(--font-head);
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      box-shadow: 0 12px 40px rgba(232,71,10,0.4);
-      z-index: 2;
-    }
-    .about-img-line {
-      position: absolute;
-      top: -24px;
-      right: -24px;
-      width: 80px;
-      height: 80px;
-      border-top: 2px solid var(--ember);
-      border-right: 2px solid var(--ember);
+      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: brightness(0.8);
     }
 
-    /* ─── HITTA OSS ─── */
-    .hitta {
-      background: var(--char);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: clamp(80px,10vw,120px) clamp(20px,5vw,60px);
+    .food-card:hover img {
+      transform: scale(1.06);
+      filter: brightness(1);
     }
-    .hitta-inner {
-      max-width: 1400px;
-      margin: 0 auto;
+
+    .food-card-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1rem 1.2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
     }
-    .hitta-head {
-      text-align: center;
-      margin-bottom: 64px;
+
+    .food-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 2px;
     }
-    .hitta-head h2 {
-      font-family: var(--font-head);
-      font-size: clamp(3rem,6vw,6rem);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+
+    .food-card-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
       color: var(--white);
-      line-height: 0.95;
+      letter-spacing: 1px;
+      line-height: 1.1;
     }
-    .hitta-head h2 span { color: var(--ember); }
-    .hitta-cards {
+
+    /* INFO */
+    .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 24px;
+      gap: 2rem;
+      align-items: start;
     }
-    .hitta-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: clamp(28px,3vw,44px);
-      position: relative;
-      overflow: hidden;
+
+    .info-block {
+      background: var(--card);
+      border: 1px solid rgba(255,215,0,0.12);
+      border-radius: 8px;
+      padding: 2rem;
     }
-    .hitta-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px;
-      height: 60%;
-      background: linear-gradient(to bottom, var(--ember), transparent);
+
+    .info-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
     }
-    .hitta-card-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(232,71,10,0.12);
-      border: 1px solid rgba(232,71,10,0.25);
-      border-radius: 2px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
+
+    .info-block p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 0.3rem;
     }
-    .hitta-card-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: var(--ember);
-    }
-    .hitta-card h3 {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ember);
-      margin-bottom: 16px;
-    }
-    .hitta-card address {
-      font-style: normal;
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--white);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-    .hitta-card .hitta-city {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: var(--white);
-      padding: 10px 20px;
-      border-radius: 2px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn-ghost:hover { border-color: var(--ember); color: var(--ember); }
-    .hours-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
+
+    .info-block p strong { color: var(--white); }
+
     .hours-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 11px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.92rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: 0.95rem;
     }
+
     .hours-row:last-child { border-bottom: none; }
-    .hours-day { color: rgba(255,255,255,0.75); }
-    .hours-time { color: var(--white); font-weight: 500; }
-    .hours-open {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+    .hours-row .day { color: var(--gray); }
+    .hours-row .time { color: var(--gold); font-weight: 600; }
+
+    .badges { margin-top: 1.2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.3);
+      color: var(--gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
       font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #4ade80;
-    }
-    .hours-open::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #4ade80;
-      animation: pulse-green 2s ease infinite;
-    }
-    @keyframes pulse-green {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
-      50% { opacity: 0.8; box-shadow: 0 0 0 6px transparent; }
-    }
-
-    /* Contact CTA bar */
-    .hitta-cta {
-      background: var(--ember);
-      border-radius: 4px;
-      padding: 28px 36px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-    .hitta-cta-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .hitta-cta-left svg {
-      width: 20px;
-      height: 20px;
-      fill: rgba(255,255,255,0.7);
-      flex-shrink: 0;
-    }
-    .hitta-cta-label {
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 2px;
-    }
-    .hitta-cta-email {
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--white);
-    }
-    .btn-white {
-      background: var(--white);
-      color: var(--ember);
-      padding: 12px 26px;
-      border-radius: 2px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: transform 0.15s, box-shadow 0.2s;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .btn-white:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
-
-    /* ─── GALLERI ─── */
-    .galleri {
-      padding: clamp(80px,10vw,120px) 0;
-      overflow: hidden;
-    }
-    .galleri-head {
-      text-align: center;
-      margin-bottom: 52px;
-      padding: 0 clamp(20px,5vw,60px);
-    }
-    .galleri-head h2 {
-      font-family: var(--font-head);
-      font-size: clamp(3rem,6vw,6rem);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 0.95;
-    }
-    .galleri-head h2 span { color: var(--ember); }
-    .galleri-strip {
-      display: flex;
-      gap: 16px;
-      width: max-content;
-      animation: galleryScroll 32s linear infinite;
-    }
-    .galleri-strip:hover { animation-play-state: paused; }
-    @keyframes galleryScroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .galleri-img {
-      width: 340px;
-      height: 260px;
-      border-radius: 4px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: var(--surface);
-      position: relative;
-    }
-    .galleri-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s var(--ease-out);
-    }
-    .galleri-img:hover img { transform: scale(1.06); }
-    .galleri-img::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
-      pointer-events: none;
-    }
-
-    /* ─── MENY STRIP ─── */
-    .meny-section {
-      background: var(--char);
-      border-top: 1px solid var(--border);
-      padding: clamp(80px,10vw,120px) clamp(20px,5vw,60px);
-    }
-    .meny-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .meny-head {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 52px;
-      gap: 24px;
-    }
-    .meny-head h2 {
-      font-family: var(--font-head);
-      font-size: clamp(3rem,5.5vw,5.5rem);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-      line-height: 0.95;
-    }
-    .meny-head h2 span { color: var(--ember); }
-    /* ─── MENU TABS ─── */
-    .meny-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 44px;
-    }
-    .meny-tab {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 10px 22px;
-      font-family: var(--font-head);
-      font-size: 1rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-    }
-    .meny-tab:hover { color: var(--white); border-color: rgba(232,71,10,0.4); }
-    .meny-tab.active {
-      background: var(--ember);
-      border-color: var(--ember);
-      color: var(--white);
-    }
-    .meny-panel { display: none; }
-    .meny-panel.active { display: block; }
-    .meny-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2px;
-    }
-    .meny-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      padding: 16px 20px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
-    }
-    .meny-item:hover { background: rgba(232,71,10,0.06); }
-    .meny-item-name {
-      font-size: 0.9rem;
-      color: var(--white);
-      font-weight: 400;
-    }
-    .meny-item-price {
-      font-family: var(--font-head);
-      font-size: 1.1rem;
-      letter-spacing: 0.04em;
-      color: var(--ember);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .meny-order-bar {
-      margin-top: 40px;
-      text-align: center;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--black);
-      border-top: 1px solid var(--border);
-      padding: clamp(52px,6vw,80px) clamp(20px,5vw,60px) 32px;
-    }
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .footer-top {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 60px;
-      padding-bottom: 52px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 32px;
-    }
-    .footer-brand {}
-    .footer-logo {
-      font-family: var(--font-head);
-      font-size: 2rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      margin-bottom: 16px;
-      display: block;
-    }
-    .footer-logo span { color: var(--ember); }
-    .footer-brand p {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.8;
-      max-width: 300px;
-    }
-    .footer-col h4 {
-      font-size: 0.78rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 20px;
     }
-    .footer-col ul { list-style: none; }
-    .footer-col li {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .footer-col li svg {
-      width: 14px;
-      height: 14px;
-      fill: var(--ember);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .footer-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 0.06em;
-    }
-    .footer-bottom a { color: rgba(255,255,255,0.6); }
-    .footer-email { color: inherit; text-decoration: none; }
-    .footer-email:hover { text-decoration: underline; }
-    .footer-bottom a:hover { color: var(--ember); }
 
-    /* ─── REVEAL ANIMATIONS ─── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    /* FOOTER */
+    footer {
+      background: #0a0a0a;
+      border-top: 1px solid rgba(255,215,0,0.1);
+      padding: 3rem 1.5rem;
+      text-align: center;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-right { display: none; }
-      .about { grid-template-columns: 1fr; }
-      .about-right { order: -1; }
-      .about-img-badge { left: 16px; }
-      .about-img-line { display: none; }
-      .hitta-cards { grid-template-columns: 1fr; }
-      .meny-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-      .footer-brand { grid-column: 1 / -1; }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      letter-spacing: 4px;
     }
+
+    .footer-tagline {
+      color: var(--gray);
+      margin-top: 0.3rem;
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy { color: #444; font-size: 0.8rem; margin-top: 1rem; }
+
+    /* OPEN STATUS */
+    #open-status {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+
+    .status-open { background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); }
+    .status-closed { background: rgba(239,68,68,0.15); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .map-container { display: none; }
       .nav-links, .nav-cta { display: none; }
       .hamburger { display: flex; }
-      .mobile-menu { display: flex; }
-      .hero h1 { font-size: clamp(4rem, 16vw, 6rem); }
-      .hitta-cta {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    }
-    @media (max-width: 480px) {
-      .meny-tabs { gap: 6px; }
-      .meny-tab { padding: 8px 14px; font-size: 0.85rem; }
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">RAYAN <span>B&amp;G</span></a>
-      <ul class="nav-links">
-        <li><a href="meny.html">Meny</a></li>
-        <li><a href="#om-oss">Om oss</a></li>
-        <li><a href="#hitta">Hitta oss</a></li>
-        <li><a href="#galleri">Galleri</a></li>
-      </ul>
-      <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="nav-cta">Beställ nu</a>
-      <button class="hamburger" id="hamburger" aria-label="Öppna meny">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+  <nav>
+    <a href="index.html" class="nav-logo">RAYAN B&G</a>
+    <ul class="nav-links">
+      <li><a href="#featured">Rätter</a></li>
+      <li><a href="meny.html">Meny</a></li>
+      <li><a href="#info">Hitta oss</a></li>
+    </ul>
+    <a href="meny.html" class="nav-cta">Se meny</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Öppna meny">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#featured" onclick="closeMenu()">Rätter</a>
     <a href="meny.html">Meny</a>
-    <a href="#om-oss">Om oss</a>
-    <a href="#hitta">Hitta oss</a>
-    <a href="#galleri">Galleri</a>
-    <a href="https://qopla.com/restaurant/rayan-b&g/qDQzvqozxP/order" target="_blank" rel="noopener" class="mobile-cta">Beställ nu</a>
+    <a href="#info" onclick="closeMenu()">Hitta oss</a>
+    <a href="meny.html" style="color:var(--gold);font-weight:700;">Se hela menyn →</a>
   </div>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero-video">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="KebabVid.mp4" type="video/mp4" />
-      </video>
-    </div>
+  <div class="hero">
     <div class="hero-bg"></div>
-    <div class="hero-inner">
-      <div class="hero-left">
-        <p class="hero-eyebrow">Välkommen till Angered</p>
-        <h1>SMAKEN<br>AV <span class="outline">RAYAN</span></h1>
-        <div class="hero-actions">
-          <a href="meny.html" class="btn-primary">
-            SE MENYN
-            <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-          <span class="hero-sub">Mejramgatan 30, Angered</span>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-tag">
-          Öppet idag
-          <strong>10:00–21:00</strong>
-        </div>
-        <div class="hero-tag">
-          Adress
-          <strong>Angered</strong>
-        </div>
-        <div class="hero-tag">
-          Kebab · Grill
-          <strong>&amp; Burgare</strong>
-        </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">ANGERED · GÖTEBORG</div>
+      <h1 class="hero-title">RAYAN<br><span>B&amp;G</span></h1>
+      <p class="hero-sub">Göteborg Bästa Falafel &nbsp;◆&nbsp; Kebab &nbsp;◆&nbsp; Grill &nbsp;◆&nbsp; Burger</p>
+      <div class="hero-actions">
+        <a href="meny.html" class="btn-primary">Se hela menyn</a>
+        <a href="#info" class="btn-ghost">Hitta oss</a>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>Scrolla</span>
-      <div class="scroll-line"></div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Hamburgare</span><span>Kebab Tallrik</span><span>Shawarma</span>
+      <span>Kyckling Rullar</span><span>Falafel</span><span>Linssoppa</span>
+      <span>Adana Kebab</span><span>Kyckling Spett</span><span>Göteborg Bästa Falafel</span>
+      <span>Hamburgare</span><span>Kebab Tallrik</span><span>Shawarma</span>
+      <span>Kyckling Rullar</span><span>Falafel</span><span>Linssoppa</span>
+      <span>Adana Kebab</span><span>Kyckling Spett</span><span>Göteborg Bästa Falafel</span>
+    </div>
+  </div>
+
+  <!-- FEATURED -->
+  <section id="featured">
+    <div class="container">
+      <div class="section-label">POPULÄRA RÄTTER</div>
+      <h2 class="section-title">Våra favoriter</h2>
+      <div class="featured-grid">
+        <div class="food-card">
+          <img src="images/01-hamburgare.jpg" alt="Hamburgare" loading="lazy">
+          <div class="food-card-info">
+            <div class="food-card-num">NR 1</div>
+            <div class="food-card-name">Hamburgare</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="images/25-kebab-tallrik.jpg" alt="Kebab Tallrik" loading="lazy">
+          <div class="food-card-info">
+            <div class="food-card-num">NR 25</div>
+            <div class="food-card-name">Kebab Tallrik</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="images/24-shawarma-tallrik.jpg" alt="Shawarma Tallrik" loading="lazy">
+          <div class="food-card-info">
+            <div class="food-card-num">NR 24</div>
+            <div class="food-card-name">Shawarma Tallrik</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="images/21-kyckling-rullar.jpg" alt="Kyckling Rullar" loading="lazy">
+          <div class="food-card-info">
+            <div class="food-card-num">NR 21</div>
+            <div class="food-card-name">Kyckling Rullar</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="images/27-falafel-tallrik.jpg" alt="Falafel Tallrik" loading="lazy">
+          <div class="food-card-info">
+            <div class="food-card-num">NR 27</div>
+            <div class="food-card-name">Falafel Tallrik</div>
+          </div>
+        </div>
+        <div class="food-card">
+          <img src="images/kyckling-spett.jpg" alt="Kyckling Spett" loading="lazy">
+          <div class="food-card-info">
+            <div class="food-card-num">GRILL</div>
+            <div class="food-card-name">Kyckling Spett</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="meny.html" class="btn-primary">Se hela menyn →</a>
+      </div>
     </div>
   </section>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <div class="ticker-group">
-          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
-          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
-          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
-          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
-          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
-          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
-        </div>
-
-        <div class="ticker-group">
-          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
-          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
-          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
-          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
-          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
-          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
-        </div>
-
-        <div class="ticker-group">
-          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
-          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
-          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
-          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
-          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
-          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
-        </div>
-
-        <div class="ticker-group">
-          <span class="ticker-item">RAYAN B&amp;G</span><span class="ticker-dot"></span>
-          <span class="ticker-item">KEBAB</span><span class="ticker-dot"></span>
-          <span class="ticker-item">GRILLEN</span><span class="ticker-dot"></span>
-          <span class="ticker-item">HAMBURGARE</span><span class="ticker-dot"></span>
-          <span class="ticker-item">VARMRÄTTER</span><span class="ticker-dot"></span>
-          <span class="ticker-item">ANGERED</span><span class="ticker-dot"></span>
-        </div>
-      </div>
-    </div>
-
-  <!-- ABOUT -->
-  <section class="about" id="om-oss">
-    <div class="about-left reveal">
-      <p class="section-label">Om oss</p>
-      <h2>MAT LAGAD<br>MED <em>PASSION.</em></h2>
-      <p>
-        I hjärtat av Angered serverar vi mat som smakar precis som den ska — ärlig, smakrik och gjord med omsorg. Våra kebabspett grillas dagligen, burgarna är saftiga och allt tillagas färskt till varje beställning.
-      </p>
-      <p>
-        Det handlar inte bara om maten. Det handlar om hantverket, känslan och den where du alltid välkomnas tillbaka.
-      </p>
-      <div class="about-stats">
-        <div class="stat-item">
-          <div class="stat-num">100<span>%</span></div>
-          <div class="stat-lbl">Färska råvaror</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">10+</div>
-          <div class="stat-lbl">Års erfarenhet</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">5<span>★</span></div>
-          <div class="stat-lbl">Kundbetyg</div>
-        </div>
-      </div>
-    </div>
-    <div class="about-right reveal reveal-delay-2">
-      <div class="about-img-line"></div>
-      <div class="about-img-wrap" id="about-img-wrap">
-        <img
-          class="about-img"
-          src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=700&q=80"
-          alt="Grillen i Angered"
-          loading="lazy"
-        />
-      </div>
-      <div class="about-img-badge">#RayanFlavor</div>
-    </div>
-  </section>
-
-  <!-- MENY CATEGORIES -->
-  <!-- HITTA OSS -->
-  <section class="hitta" id="hitta">
-    <div class="hitta-inner">
-      <div class="hitta-head reveal">
-        <p class="section-label" style="justify-content:center;margin-bottom:16px;">Välkommen</p>
-        <h2>HITTA <span>OSS</span></h2>
-      </div>
-      <div class="hitta-cards">
-        <div class="hitta-card reveal reveal-delay-1">
-          <div class="hitta-card-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+  <!-- INFO -->
+  <section id="info" style="background:var(--dark);">
+    <div class="container">
+      <div class="section-label">HITTA OSS</div>
+      <h2 class="section-title">Öppettider &amp; Adress</h2>
+      <div class="info-grid">
+        <div class="info-block">
+          <h3>Adress</h3>
+          <p><strong>Mejramgatan 30</strong></p>
+          <p>424 46 Angered, Göteborg</p>
+          <p style="margin-top:1rem;"><strong>E-post</strong></p>
+          <p>dlerhadad1978@yahoo.com</p>
+          <div class="badges">
+            <span class="badge">Swish betalning</span>
+            <span class="badge">Halal certifierad</span>
           </div>
-          <h3>Angered</h3>
-          <address>Mejramgatan 30</address>
-          <p class="hitta-city">424 46 Angered, Sverige</p>
-          <a href="https://maps.google.com/?q=Mejramgatan+30+Angered" target="_blank" rel="noopener" class="btn-ghost">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-            Hitta hit
-          </a>
         </div>
-        <div class="hitta-card reveal reveal-delay-2">
-          <div class="hitta-card-icon">
-            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
-          </div>
+        <div class="info-block">
           <h3>Öppettider</h3>
-          <div class="hours-list">
-            <div class="hours-row">
-              <span class="hours-day">Måndag – Söndag</span>
-              <span class="hours-time">10:00 – 21:00</span>
-            </div>
-          </div>
-          <div style="margin-top:24px;">
-            <span class="hours-open">Öppet nu</span>
-          </div>
+          <span id="open-status"></span>
+          <div class="hours-row"><span class="day">Måndag – Fredag</span><span class="time">10:00 – 21:00</span></div>
+          <div class="hours-row"><span class="day">Lördag</span><span class="time">10:00 – 21:00</span></div>
+          <div class="hours-row"><span class="day">Söndag</span><span class="time">10:00 – 21:00</span></div>
         </div>
       </div>
-      <!-- GOOGLE MAPS -->
-      <div class="hitta-map map-container reveal" style="border-radius:4px;overflow:hidden;margin-bottom:24px;border:1px solid var(--border);">
-        <iframe src="https://maps.google.com/maps?q=Mejramgatan+30,+42446+Angered&output=embed" width="100%" height="400" style="border:0;display:block;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-
-      <div class="hitta-cta reveal">
-        <div class="hitta-cta-left">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          <div>
-            <div class="hitta-cta-label">Frågor eller funderingar?</div>
-            <div class="hitta-cta-email">dlerhadad1978@yahoo.com</div>
-          </div>
-        </div>
-        <a href="mailto:dlerhadad1978@yahoo.com" class="btn-white">Kontakta oss</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERI -->
-  <section class="galleri" id="galleri">
-    <div class="galleri-head reveal">
-      <p class="section-label" style="justify-content:center;margin-bottom:16px;">Inspiration</p>
-      <h2>GALLE<span>RI</span></h2>
-    </div>
-    <div class="galleri-strip">
-      <!-- Set 1: kebab wrap, shish skewers, shawarma plate, falafel, burger, lamb skewers, chicken skewers, grilled meat -->
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1561043433-aaf687c4cf04?w=400&q=80" alt="Kebabrulle" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80" alt="Shish kebab spett" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400&q=80" alt="Shawarma tallrik" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80" alt="Falafel" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Hamburgare" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80" alt="Lammspett" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?w=400&q=80" alt="Kycklingspett" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt="Grillat kött" loading="lazy" /></div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1561043433-aaf687c4cf04?w=400&q=80" alt="Kebabrulle" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&q=80" alt="Shish kebab spett" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=400&q=80" alt="Shawarma tallrik" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=400&q=80" alt="Falafel" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Hamburgare" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=400&q=80" alt="Lammspett" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1598514983318-2f64f8f4796c?w=400&q=80" alt="Kycklingspett" loading="lazy" /></div>
-      <div class="galleri-img"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&q=80" alt="Grillat kött" loading="lazy" /></div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <span class="footer-logo">RAYAN <span>B&amp;G</span></span>
-          <p>Välkommen till Rayan B&amp;G i Angered. Vi serverar kebab, grillrätter och burgare med fokus på smak, kvalitet och färska råvaror varje dag.</p>
-        </div>
-        <div class="footer-col">
-          <h4>Kontakt</h4>
-          <ul>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-              <a href="mailto:dlerhadad1978@yahoo.com" class="footer-email">dlerhadad1978@yahoo.com</a>
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-              Mejramgatan 30, Angered
-            </li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Öppettider</h4>
-          <ul>
-            <li>Mån – Sön: 10:00 – 21:00</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2026 Rayan B&amp;G. Alla rättigheter förbehållna.</span>
-        <span>Powered by <a href="https://synsnumedia.se/" target="_blank" rel="noopener">SynsNu</a></span>
-      </div>
+    <div class="footer-logo">RAYAN B&amp;G</div>
+    <p class="footer-tagline">GÖTEBORG BÄSTA FALAFEL</p>
+    <div class="footer-links">
+      <a href="#featured">Rätter</a>
+      <a href="meny.html">Meny</a>
+      <a href="#info">Hitta oss</a>
     </div>
+    <p class="footer-copy">© 2025 Rayan B&amp;G · Mejramgatan 30, Angered, Göteborg</p>
   </footer>
 
   <script>
-    // ─── NAV SCROLL ───
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    // ─── HAMBURGER ───
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      hamburger.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        hamburger.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // ─── SCROLL REVEAL ───
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          revealObserver.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => revealObserver.observe(el));
-
-    // ─── B&W → COLOR ON SCROLL ───
-    const aboutImgWrap = document.getElementById('about-img-wrap');
-    if (aboutImgWrap) {
-      const colorObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            // Small delay for dramatic effect after the section reveals
-            setTimeout(() => aboutImgWrap.classList.add('revealed'), 300);
-            colorObserver.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.4 });
-      colorObserver.observe(aboutImgWrap);
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
     }
-
-    // ─── HOURS OPEN/CLOSED ───
-    const openIndicator = document.querySelector('.hours-open');
-    if (openIndicator) {
-      const now = new Date();
-      const h = now.getHours();
-      const isOpen = h >= 10 && h < 21;
-      if (!isOpen) {
-        openIndicator.textContent = 'Stängt nu';
-        openIndicator.style.color = '#f87171';
-        openIndicator.style.setProperty('--dot-color', '#f87171');
-        openIndicator.style.cssText += '; color: #f87171;';
-        openIndicator.style.setProperty('color', '#f87171');
-        // Remove green pulse, add red
-        openIndicator.style.filter = 'hue-rotate(120deg)';
-      }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
     }
-
-    // ─── ACTIVE NAV ON SCROLL ───
-    // rootMargin fires when a section crosses ~25% from the top of the viewport.
-    // Hero is also observed so it can clear all active states.
-    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        navAnchors.forEach(a => a.classList.remove('active'));
-        if (e.target.id === 'hero') return; // hero = no link highlighted
-        const link = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if (link) link.classList.add('active');
-      });
-    }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
-    ['hero', 'om-oss', 'hitta', 'galleri'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el) sectionObserver.observe(el);
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) closeMenu();
     });
 
-    // ─── MENU TABS ───
-    document.querySelectorAll('.meny-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.tab;
-        document.querySelectorAll('.meny-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.meny-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + target).classList.add('active');
-      });
-    });
+    const statusEl = document.getElementById('open-status');
+    const now = new Date();
+    const minutes = now.getHours() * 60 + now.getMinutes();
+    const isOpen = minutes >= 600 && minutes < 1260;
+    statusEl.textContent = isOpen ? '● Öppet nu' : '● Stängt';
+    statusEl.className = isOpen ? 'status-open' : 'status-closed';
   </script>
 </body>
 </html>
